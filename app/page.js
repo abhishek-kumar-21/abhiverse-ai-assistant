@@ -43,7 +43,7 @@ export default function Home() {
             className={`mb-4 mt-2 flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
-              className={`inline-block p-4 pt-0 rounded-2xl text-sm ${message.role === "user"
+              className={`inline-block px-4 py-2 rounded-2xl text-sm ${message.role === "user"
                   ? "bg-[#f5f5f5] dark:bg-[rgb(47,47,47)] max-w-[80%] text-primary-foreground"
                   : "max-w-full text-gray-900 dark:text-gray-100"
                 }`}

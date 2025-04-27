@@ -129,6 +129,24 @@
   }
 }
 
-.ready {
+/* used for copy button in ResponseUI2 */
+/* .ready {
   cursor: pointer;
+} */
+
+
+/* used for managing unwanted border around code in ResponseUI */
+/* Remove the thick border or background around code blocks */
+.prose pre {
+  border: none;
+  padding: 1rem;
+  box-shadow: none;
+}
+
+/* Optional: fine-tune code inside pre */
+.prose pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: 0.95rem;
 }
