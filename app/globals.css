@@ -135,18 +135,29 @@
 } */
 
 
-/* used for managing unwanted border around code in ResponseUI */
-/* Remove the thick border or background around code blocks */
+/* === Code block styles === */
 .prose pre {
   border: none;
-  padding: 1rem;
+  padding: 0;
+  margin: 0;
   box-shadow: none;
 }
 
-/* Optional: fine-tune code inside pre */
 .prose pre code {
   background: none;
   padding: 0;
   color: inherit;
-  font-size: 0.95rem;
+}
+
+/* Add padding to pre blocks without highlighted code */
+.prose pre:not(:has(code.hljs)) {
+  padding: 13px;
+}
+
+/* === Inline code styles === */
+.prose code {
+  background-color: rgba(135, 131, 120, 0.15);
+  font-weight: 500;
+  padding: 0.2em 0.4em;
+  border-radius: 0.3em;
 }

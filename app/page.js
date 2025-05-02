@@ -28,8 +28,8 @@ export default function Home() {
   }, [messages]);
 
   return (
-    <div className="flex flex-col min-h-screen max-w-[92vw] md:max-w-3xl mx-auto my-5">
-      <div className="flex-1">
+    <div className="flex flex-col max-w-[92vw] md:max-w-3xl mx-auto my-5">
+      <div className="flex-1 pb-25">
         {messages?.length === 0 && (
           <div className="w-full mt-[40vh] mb-4 text-gray-400 items-center justify-center flex flex-col gap-3">
             <div className="text-2xl">👋</div>
@@ -75,9 +75,9 @@ export default function Home() {
       {/* Input section */}
       <form
         onSubmit={handleSubmit}
-        className="relative flex flex-col w-full p-2 border-t dark:border-gray-700"
+        className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-3xl px-2 bg-background border-t dark:border-gray-700 z-10"
       >
-        <div className="relative w-full">
+        <div className="relative w-full py-2">
           <Textarea
             value={input}
             onChange={handleInputChange}
@@ -87,7 +87,7 @@ export default function Home() {
           />
 
           {/* Controls inside textarea area */}
-          <div className="absolute right-2 bottom-2 flex items-center space-x-2">
+          <div className="absolute right-4 bottom-3 flex items-center space-x-2">
             {isLoading ? (
               <>
                 <Loader2 className="animate-spin h-5 w-5 text-primary" />
@@ -114,6 +114,7 @@ export default function Home() {
           </div>
         </div>
       </form>
+
     </div>
   );
 }
