@@ -172,9 +172,10 @@
 }
 
 /* === Inline code styles === */
-.prose code {
+.prose kbd {
   background-color: rgba(135, 131, 120, 0.15);
   font-weight: 500;
   padding: 0.2em 0.4em;
   border-radius: 0.3em;
+  box-shadow: none;
 }

@@ -51,9 +51,9 @@ const ResponseUIAdvanced = ({ content }) => {
           code({ node, inline, className, children, ...props }) {
             if (inline || !className) {
               return (
-                <code className={className} {...props}>
+                <kbd className={className} {...props}>
                   {children}
-                </code>
+                </kbd>
               );
             }
             return <CodeBlock className={className}>{children}</CodeBlock>;
