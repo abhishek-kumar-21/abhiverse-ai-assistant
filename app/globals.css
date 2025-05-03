@@ -129,29 +129,46 @@
   }
 }
 
-/* used for copy button in ResponseUI2 */
-/* .ready {
-  cursor: pointer;
-} */
-
 
 /* === Code block styles === */
 .prose pre {
-  border: none;
-  padding: 0;
   margin: 0;
-  box-shadow: none;
+  padding: 0;
+  background: #f9f9f9;
+  color: black;
+}
+
+.dark .prose pre {
+  background: #171717;
+  color: white;
 }
 
 .prose pre code {
-  background: none;
+  font-size: 14px;
   padding: 0;
+  background: none;
   color: inherit;
+  border: 1px solid #d1d5dc;
+  border-radius: inherit;
 }
 
-/* Add padding to pre blocks without highlighted code */
+.dark .prose pre code {
+  border: 1px solid #474747;
+  border-radius: inherit;
+}
+
+/* Add padding only to non-highlighted code blocks */
 .prose pre:not(:has(code.hljs)) {
   padding: 13px;
+  border: 1px solid #d1d5dc;
+}
+
+.dark .prose pre:not(:has(code.hljs)) {
+  border: 1px solid #474747;
+}
+
+.prose pre:not(:has(code.hljs)) code {
+  border: none;
 }
 
 /* === Inline code styles === */

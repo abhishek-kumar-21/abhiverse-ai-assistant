@@ -6,6 +6,7 @@ import { Loader2, Send } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import ResponseUI from "@/components/ResponseUI";
+import ResponseUIAdvanced from "@/components/ResponseUIAdvanced";
 
 export default function Home() {
   const scrollRef = useRef(null);
@@ -48,7 +49,7 @@ export default function Home() {
                   : "max-w-full text-gray-900 dark:text-gray-100"
                 }`}
             >
-              <ResponseUI content={message.content} />
+              <ResponseUIAdvanced content={message.content} />
             </div>
           </div>
         ))}

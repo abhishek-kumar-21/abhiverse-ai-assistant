@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
     return (
-        <div className=" flex items-center justify-center min-h-screen flex-col p-6 text-center">
+        <div className="flex items-center justify-center flex-col p-6 text-center" style={{ height: "calc(100vh - 61px)" }}>
             {/* 404 Heading */}
             <h1 className="text-8xl font-extrabold drop-shadow-lg">
                 404
