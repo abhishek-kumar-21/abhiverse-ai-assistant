@@ -58,7 +58,14 @@ const ResponseUIAdvanced = ({ content, useProse = true }) => {
             }
             return <CodeBlock className={className}>{children}</CodeBlock>;
           },
-        }}
+          table({ children }) {
+            return (
+              <div className="table-wrapper">
+                <table>{children}</table>
+              </div>
+            );
+          }
+        }}        
       />
     </div>
   ) : (

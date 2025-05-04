@@ -184,3 +184,16 @@
   box-shadow: none;
   font-size: inherit;
 }
+
+/* Ensure tables scroll horizontally when needed */
+.prose table {
+  width: 100%;
+  table-layout: auto;
+  display: table;
+}
+
+/* Make only the table scrollable */
+.prose .table-wrapper {
+  overflow-x: auto;
+  display: block;
+}
