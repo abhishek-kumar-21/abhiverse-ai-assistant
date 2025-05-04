@@ -2,14 +2,16 @@
 
 import { useChat } from "@ai-sdk/react";
 import { Button } from "@/components/ui/button";
-import { Loader2, Send } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { ArrowDown, ChevronDown, Loader2, Send } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
-import ResponseUI from "@/components/ResponseUI";
+// import ResponseUI from "@/components/ResponseUI";
 import ResponseUIAdvanced from "@/components/ResponseUIAdvanced";
 
 export default function Home() {
   const scrollRef = useRef(null);
+  const [lastScrolledIndex, setLastScrolledIndex] = useState(-1);
+  const [showScrollIcon, setShowScrollIcon] = useState(false);
 
   const {
     messages,
@@ -22,15 +24,40 @@ export default function Home() {
     error
   } = useChat({ api: "/api/gemini" });
 
+  // Scroll only when a new user message is added
   useEffect(() => {
-    if (scrollRef.current) {
+    const lastIndex = messages.length - 1;
+    if (
+      messages?.[lastIndex]?.role === "user" &&
+      lastIndex !== lastScrolledIndex &&
+      scrollRef.current
+    ) {
       scrollRef.current.scrollIntoView({ behavior: "smooth" });
+      setLastScrolledIndex(lastIndex);
     }
+  }, [messages, lastScrolledIndex]);
+
+  // Detect scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const bottomOffset = 190; // pixels from bottom before hiding the icon
+      const isNearBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - bottomOffset;
+      setShowScrollIcon(!isNearBottom);
+    };
+
+    handleScroll(); // Run on message render
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [messages]);
+
+  const scrollToBottom = () => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="flex flex-col max-w-[92vw] md:max-w-3xl mx-auto my-5">
-      <div className="flex-1 pb-25">
+      <div className="flex-1 pb-50">
         {messages?.length === 0 && (
           <div className="w-full mt-[40vh] mb-4 text-gray-400 items-center justify-center flex flex-col gap-3">
             <div className="text-2xl">👋</div>
@@ -44,9 +71,9 @@ export default function Home() {
             className={`mb-4 mt-2 flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
-              className={`inline-block px-4 py-2 rounded-2xl text-sm ${message.role === "user"
-                  ? "bg-[#f5f5f5] dark:bg-[rgb(47,47,47)] max-w-[80%] text-primary-foreground"
-                  : "max-w-full text-gray-900 dark:text-gray-100"
+              className={`inline-block py-2 rounded-2xl text-sm ${message.role === "user"
+                ? "bg-[#f5f5f5] dark:bg-[rgb(47,47,47)] max-w-[80%] text-primary-foreground px-4"
+                : "max-w-full text-gray-900 dark:text-gray-100"
                 }`}
             >
               <ResponseUIAdvanced content={message.content} useProse={message.role !== "user"} />
@@ -66,6 +93,17 @@ export default function Home() {
               Retry
             </Button>
           </div>
+        )}
+
+        {showScrollIcon && (
+          <button
+            onClick={scrollToBottom}
+            className="fixed bottom-22 right-1/2 bg-white dark:bg-[#212121] border p-1.5 rounded-full shadow-md transform transition-all duration-300 z-20"
+            title="Scroll to bottom"
+          >
+            <ChevronDown className="h-6 w-6 block md:hidden" />
+            <ArrowDown className="h-5 w-5 hidden md:block" />
+          </button>
         )}
 
         {/* Spacer to avoid touching bottom */}
