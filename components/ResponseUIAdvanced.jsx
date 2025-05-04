@@ -40,8 +40,8 @@ const CodeBlock = ({ children, className }) => {
   );
 };
 
-const ResponseUIAdvanced = ({ content }) => {
-  return (
+const ResponseUIAdvanced = ({ content, useProse = true }) => {
+  return useProse ? (
     <div className="prose dark:prose-invert max-w-full">
       <ReactMarkdown
         children={content}
@@ -61,6 +61,8 @@ const ResponseUIAdvanced = ({ content }) => {
         }}
       />
     </div>
+  ) : (
+    <div className="whitespace-pre-wrap text-gray-900 dark:text-gray-100 text-base">{content}</div>
   );
 };
 

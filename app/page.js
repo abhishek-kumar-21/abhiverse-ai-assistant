@@ -49,7 +49,7 @@ export default function Home() {
                   : "max-w-full text-gray-900 dark:text-gray-100"
                 }`}
             >
-              <ResponseUIAdvanced content={message.content} />
+              <ResponseUIAdvanced content={message.content} useProse={message.role !== "user"} />
             </div>
           </div>
         ))}
