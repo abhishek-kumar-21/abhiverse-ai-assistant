@@ -120,6 +120,13 @@ export default function Home() {
           <Textarea
             value={input}
             onChange={handleInputChange}
+            onKeyDown={(e) => {
+              const isTouchDevice = window.innerWidth <= 768; // Disable for tablets/phones
+              if (!isTouchDevice && e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                handleSubmit(e);
+              }
+            }}
             className="pr-24 resize-none rounded-xl px-3 py-2 max-h-[140px]"
             placeholder="Type your message..."
             rows={1}
