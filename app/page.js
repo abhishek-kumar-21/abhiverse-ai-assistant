@@ -118,6 +118,7 @@ export default function Home() {
       >
         <div className="relative w-full py-2">
           <Textarea
+            autoFocus
             value={input}
             onChange={handleInputChange}
             onKeyDown={(e) => {
