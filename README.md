@@ -1,6 +1,9 @@
-# AbhiVerse AI
+<h1 align="center">AbhiVerse AI Assistant</h1>
 
 AbhiVerse AI is a conversational web app built with **Next.js**, **React**, and **Tailwind CSS**. It features a chat interface where users can interact with an AI model, view code with syntax highlighting, and enjoy markdown rendering with light/dark mode toggling.
+
+![Abhiverse AI Assistant](https://github.com/user-attachments/assets/3de1b35a-cd53-4b90-9a87-dc09ae47a98b)
+
 
 ## Features
 - **AI Chat Integration**: Chat with the AI and receive dynamic responses.
