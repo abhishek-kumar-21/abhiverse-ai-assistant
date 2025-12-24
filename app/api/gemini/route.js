@@ -28,7 +28,7 @@ export async function POST(request) {
 
     // return response as stream of text to display while generating
     const stream = await streamText({
-        model: google("gemini-2.0-flash"),
+        model: google("gemini-2.5-flash"),
         messages: buildGoogleGenAIPrompt(messages),
         temperature: 0.7,
     });
